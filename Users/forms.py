@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm , Authent
 
 from django.contrib.auth.forms import AuthenticationForm
 from django.forms.widgets import PasswordInput, TextInput
+from django.utils.text import capfirst
 
 from .models import CustomUser
 from django.contrib import messages
@@ -13,6 +14,7 @@ class CustomUserCreateForm(UserCreationForm):
     error_messages = {
         'password_mismatch': 'Type smtn here!',
     }
+    
     class Meta:
         model = CustomUser
         fields = ( 'image','matricula','username' , 'email' ,'cpf', 'phone', 'data_de_nascimento','curso_relacao','disciplina_relacao','password1','password2')
@@ -85,5 +87,7 @@ class CustomUserChangeForm(UserChangeForm):
         model = CustomUser
         fields = ('username', 'email', 'phone', 'first_name', 'last_name')
         
+class Login (AuthenticationForm):
 
-   
+    username = forms.CharField(widget=TextInput(attrs={'class':'validate','placeholder': 'Matricula'}))
+    password = forms.CharField(widget=PasswordInput(attrs={'placeholder':'Senha'}))

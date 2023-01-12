@@ -28,6 +28,7 @@ form
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 6px;
     
 }
 .nome_perido input
@@ -64,17 +65,16 @@ form
 .radio_title
 {
     color: white;
+    width: 331px;
+    height: 66px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
 }
 .radio_title p
 {
-    margin-top: 24px;
-}
-.radios
-{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
+    margin-bottom: 10px;
 
 }
 .radios
@@ -87,36 +87,30 @@ form
 
     gap: 5px;
 }
-.radios ul
+.optativa
 {
     display: flex;
-    list-style-type: none;
-    align-items: center;
-    justify-content: center;
+    gap: 50px;
 }
-.radios ul li
+.optativa label
 {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-     width: 161px;
-    height: 66px;
-    gap: 5px;
 }
-.radios ul li label
+.optativa div
 {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+
 }
 .dependencias
 {
     display: flex;
     flex-direction: column;
-    min-width: 688px;
-    max-width: 688px;
+    min-width: 700px;
+    max-width: 700px;
     width: max-content;
 }
 .dependencias label
@@ -176,3 +170,4 @@ input[type=text], input[type=number], input[type=submit]
         width: max-content;
     }
 }
+.
