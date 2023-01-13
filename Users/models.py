@@ -67,7 +67,7 @@ class CustomUser(AbstractUser):
     is_staff = models.BooleanField('Membro da equipe', default=True)
 
     USERNAME_FIELD = 'matricula'
-    REQUIRED_FIELDS = ['username' , 'email' ,'cpf', 'phone']
+    REQUIRED_FIELDS = ['username' , 'email' ,'cpf', 'phone','data_de_nascimento']
 
     def __str__(self):
         return self.username

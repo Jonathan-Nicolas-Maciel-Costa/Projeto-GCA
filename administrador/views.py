@@ -1,3 +1,4 @@
+from tokenize import group
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from django.urls import reverse
@@ -10,6 +11,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import Group
 from django.db.models import Q
+from django.shortcuts import redirect
 
 from .form import Form_disciplina, Form_Curso
 from Users import forms
@@ -19,11 +21,39 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 # Create your views here.
 
+"""
+>>> from Users.models import CustomUser
+>>> user = CustomUser.objects.get(id=28)
+>>> user
+<CustomUser: 2312321>
+>>> user.groups
+<django.db.models.fields.related_descriptors.create_forward_many_to_many_manager.<locals>.ManyRelatedManager object at 0x00000227AD051120>
+>>> user.groups.all()
+<QuerySet [<Group: Professor>]>
+>>> from django.contrib.auth.models import Group
+>>> group = Group.objects.get(name="Professor") 
+>>> user.groups.contains(group)
+True
+>>> 
+"""
+
+
 @login_required(login_url='/user/login/')
 def home_view (request):
 
+    logged = request.user
+
     teacher_group = Group.objects.get(name='Professor')
     student_group = Group.objects.get(name='Aluno')
+
+    print('e professor? >',logged.username, logged.groups.contains(teacher_group), '<<<<<')
+    print('e Aluno?', logged.username, logged.groups.contains(student_group), '<<<<<')
+
+    if logged.groups.contains(student_group):
+        
+        aluno = redirect ('Aluno/aluno_home/', {})
+        return aluno
+    
     
     curso_list =  Curso.objects.all()
     disciplina_total =  len(Disciplina.objects.all())

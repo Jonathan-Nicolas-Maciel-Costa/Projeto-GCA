@@ -39,6 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'Users',
+    'Aluno',
+    'administrador'
 ]
 
 MIDDLEWARE = [
@@ -53,10 +57,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'GCA.urls'
 
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -68,6 +73,12 @@ TEMPLATES = [
         },
     },
 ]
+
+SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
+TEMPLATE_DIRS = (
+    os.path.join(SETTINGS_PATH, 'templates'),
+)
+
 
 WSGI_APPLICATION = 'GCA.wsgi.application'
 
@@ -128,18 +139,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Application definition
 
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    
-    'administrador',
-    'Users'
-    
-]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -152,24 +151,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'GCA.urls'
-
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-                
-                'django.template.context_processors.media',
-            ],
-        },
-    },
-]
 
 WSGI_APPLICATION = 'GCA.wsgi.application'
 
